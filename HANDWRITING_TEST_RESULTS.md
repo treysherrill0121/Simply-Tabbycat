@@ -19,3 +19,16 @@ The published static site calls `/api/transcribe` but this repository has no API
 Recognition remains explicitly experimental. Every returned line goes to an editable review; fluent output is never treated as proof of accuracy. The app retains the existing printed-photo OCR, phone-scanner paste instructions, manual questions, premade quizzes, saved custom bank, and gameplay. Pasted/corrected notes take precedence over attached photos to avoid unnecessary rescans. A scan over 24 detected lines reports a limit instead of silently truncating.
 
 Deployment must target the already-existing Simply Tabbycat Render service, after its workspace and repository linkage are verified. Do not create another service or change paid plans. No deployment was performed during this validation.
+
+
+## Follow-up deployment and live browser validation
+
+GitHub access was enabled and the repair commit `7b409c2f4a6469f618554462174040125aac9dfb` was deployed to the existing service `srv-dc07rk40916s73ct6jr0`. Render deploy `dep-dc08aletlv9c739evgj0` reached `live`. Both the root page and handwriting worker were retrieved successfully.
+
+A live Chrome browser test supersedes the earlier browser limitation above:
+
+- Uploaded the real handwritten-line JPG through the file picker. The on-device worker downloaded the model and returned exactly `Mr. Brown commented icily.` in the editable review field.
+- Uploaded the full whiteboard photo. The app reported that no separate handwriting lines were found, restored controls, and generated no quiz.
+- With that photo still attached, pasted four corrected cosmetology term/definition notes. The app created four questions without rescanning the photo, and Play displayed four answer choices.
+
+Android performance and reliable automatic full-page transcription remain unverified. The clean-line success does not establish accuracy on notebook pages. No paid API, new service, or service-plan change was used.
